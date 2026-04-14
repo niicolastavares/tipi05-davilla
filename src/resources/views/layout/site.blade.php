@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     @include('partials.head')
-<head>
-<body>
-    
-    <div class="page-wrapper">
-        @include('partials.preloader')
 
-        @include('partials.header')
+    <head>
 
-        <main>
-            @yield('content')
-        </main>
+    <body>
 
-        @include('partials.footer')
-        
+        <div class="page-wrapper">
+            @include('partials.preloader')
 
-    </div>
+            @include('partials.header')
 
-    @include('partials.script')
+            <main>
+                @yield('content')
+            </main>
+
+            @include('partials.footer')
 
 
-</body>
+        </div>
+
+        @include('partials.script')
+
+
+    </body>
+
 </html>
