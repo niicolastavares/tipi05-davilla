@@ -1,6 +1,10 @@
+@php
+    $features = asset('davilla/images/banner-features.png')
+@endphp
+
 <div class="features-section"> 
         <div class="shape_wrapper shape_one">
-            <div class="shape_inner shape_two" style="background-image: url(https://via.placeholder.com/1920x1080);"><div class="overlay"></div></div>
+            <div class="shape_inner shape_two" style="background-image: url('{{ $features }}');"><div class="overlay"></div></div>
         </div>
 
         <div class="auto-container">

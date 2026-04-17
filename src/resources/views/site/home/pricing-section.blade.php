@@ -10,7 +10,7 @@
                 <div class="pricing-table col-xl-3 col-lg-6 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><img src="https://via.placeholder.com/163x154" alt=""></figure>
+                            <figure class="image"><img src="{{ asset('davilla/images/pricing/product1-pricing.png') }}" alt=""></figure>
                         </div>
                         <div class="pricing-svg">
                             <svg viewBox="0 0 1000 690">
@@ -40,7 +40,7 @@
                 <div class="pricing-table col-xl-3 col-lg-6 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><img src="https://via.placeholder.com/169x162" alt=""></figure>
+                            <figure class="image"><img src="{{ asset('davilla/images/pricing/product2-pricing.png') }}" alt=""></figure>
                         </div>
                         <div class="pricing-svg">
                             <svg viewBox="0 0 1000 690">
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="image-box">
-                            <figure class="image"><img src="https://via.placeholder.com/178x167" alt=""></figure>
+                            <figure class="image"><img src="{{ asset('davilla/images/pricing/product3-pricing.png') }}" alt=""></figure>
                         </div>
                         <div class="pricing-svg">
                             <svg viewBox="0 0 1000 690">
@@ -107,7 +107,7 @@
                 <div class="pricing-table col-xl-3 col-lg-6 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><img src="https://via.placeholder.com/169x166" alt=""></figure>
+                            <figure class="image"><img src="{{ asset('davilla/images/pricing/product4-pricing.png') }}" alt=""></figure>
                         </div>
                         <div class="pricing-svg">
                             <svg viewBox="0 0 1000 690">

@@ -1,0 +1,21 @@
+/* TODO: RESOLVENDO IMAGENS DOS CAKES NA SERVICES */
+
+.service-block .image img{
+    height: stretch;
+}
+
+
+/* TODO: ARRUMANDO LOGO HEADER */
+.main-header .main-box .logo {
+    width: 200px;
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    z-index: 100;
+    margin-left: -92.5px;   
+}
+
+.sticky-header .logo {
+    top: 0px;
+    width: 169px;
+}

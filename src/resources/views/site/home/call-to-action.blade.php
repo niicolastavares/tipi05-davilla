@@ -1,6 +1,10 @@
+@php
+    $callAction = asset('davilla/images/banner-call-to-action.png');
+@endphp
+
 <section class="call-to-action" > 
         <div class="shape_wrapper shape_one">
-            <div class="shape_inner shape_two" style="background-image: url(https://via.placeholder.com/1920x1080);"><div class="overlay"></div></div>
+            <div class="shape_inner shape_two" style="background-image: url('{{ $callAction}}');"><div class="overlay"></div></div>
         </div>
 
         <div class="auto-container">
