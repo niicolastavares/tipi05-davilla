@@ -26,12 +26,13 @@ class AppServiceProvider extends ServiceProvider
         View()->composer('partials.header', function ($view) {
 
             // * Buscar todas as categorias e ordenar por nome crescente A-Z
-            $categorias = Categoria::orderBy('nome_categoria', 'asc')->get();
+            $listaCategoria = Categoria::orderBy('nome_categoria', 'asc')->get();
 
-            dd($categorias);
-            //var_dump($categorias);
+            //dd($listaCategoria); // Para a aplicação e retorna o conteúdo da variável $listaCategoria para depuração
+            //var_dump($listaCategoria); // Exibe o conteúdo da variável $listaCategoria sem parar a execução da aplicação
 
-            $view->with('categorias', $categorias);
+            $view->with('lista', $listaCategoria); // Passa a variável $listaCategoria para a view 'partials.header' com o nome 'lista'
+
         });
     }
 }
