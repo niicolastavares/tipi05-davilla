@@ -1,5 +1,5 @@
 @php
-    $recipes = asset('davilla/images/recipes/banner-recipes.png');
+    $recipes = asset('davilla/images/recipes/banner-recipes.jpg');''
 @endphp
 
 <section class="recipes-section" style="background-image: url('{{ $recipes }}');">
