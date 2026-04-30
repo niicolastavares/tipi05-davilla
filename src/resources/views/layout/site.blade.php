@@ -24,7 +24,15 @@
 
         </div>
 
-        @include('partials.script')
+        {{--  @include('partials.script'): Carrega os scripts usados em várias páginas --}}
+        @include('partials.script') 
+
+
+        @stack('plugins') {{-- @stack: Área reservada, vai permitir que uma página específica injete um script --}}
+
+        <script src="{{ asset('davilla/js/script.js') }}"></script> {{-- Script nosso (DAVILLA) --}}
+
+        @stack('scripts') 
 
 
     </body>
