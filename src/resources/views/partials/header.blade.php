@@ -94,7 +94,7 @@
         <div class="auto-container clearfix">
             <!--Logo-->
             <div class="logo">
-                <a href="#" title="Sticky Logo"><img src="{{ asset('davilla/images/logo-davilla-texto.svg') }}" alt="Sticky Logo"></a>
+                <a href="{{ route('home') }}" title="Logo DaVilla"><img src="{{ asset('davilla/images/logo-davilla-texto.svg') }}" alt="Sticky Logo"></a>
             </div>
 
             <!--Nav Outer-->

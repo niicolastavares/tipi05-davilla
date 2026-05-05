@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 
 class CardapioController extends Controller
 {
-    
-    public function cardapio() {
+
+    public function cardapio()
+    {
 
         // Buscar CATEGORIA para montar a lista de filtros
         $filtroCategoria = Categoria::where('status_categoria', 'ATIVO')->orderBy('ordem_categoria')->get();
@@ -29,4 +30,24 @@ class CardapioController extends Controller
 
         return view('site.cardapio.cardapio', compact('filtroCategoria', 'listaProduto'));
     }
-}   
+
+    public function showProduto($slug){
+
+        // Faça um select na tabela aonde o id_produto seja igual ao id passado por parâmetro, e traga a categoria relacionada, caso não encontre, retorne um erro 404
+        $produto = Produto::with('CategoriaProduto')
+        ->where('status_produto', 'ATIVO')
+        ->where('slug_produto', $slug)
+        ->firstOrFail(); 
+        
+        return view('site.cardapio.produto', compact('produto'));
+
+        dd($produto);
+    }
+
+
+
+
+
+
+
+}

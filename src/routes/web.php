@@ -26,6 +26,11 @@ Route::get('/contato', [ContatoController::class, 'contato'])->name('contato');
 /** Submenu de cardápio */
 Route::get('/cardapio/categoria/{id}', [CardapioController::class, 'show'])->name('cardapio.categoria');
 
+
+/** Submenu de produto */
+Route::get('/cardapio/produto/{slug}', [CardapioController::class, 'showProduto'])->name('cardapio.produto');
+
+
 /** Submenu de região */
 Route::get('/regiao/categoria/{id}', [RegiaoController::class, 'show'])->name('regiao.index');
 
