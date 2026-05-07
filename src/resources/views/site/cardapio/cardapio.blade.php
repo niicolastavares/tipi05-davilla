@@ -3,6 +3,7 @@
 @section('content')
 
     @include('site.cardapio.page-title')
+    
     @include('site.cardapio.portfolio-section')
 
     {{-- Plugin usado apenas nesta página.
@@ -16,3 +17,17 @@
     @endpush
 
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filtroInicial = "{{ $categoriaAtiva }}";
+
+        if (filtroInicial !== 'all') {
+            const botao = document.querySelector(`[data-filter="${filtroInicial}"]`);
+
+            if (botao) {
+                botao.click();
+            }
+        }
+    });
+</script>

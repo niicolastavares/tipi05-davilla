@@ -13,6 +13,8 @@
 
             @include('partials.header')
 
+            {{-- Breadcrumb: Área de navegação, mostra onde o usuário está no site --}}
+
             <main>
                 @yield('content')
 
@@ -32,7 +34,7 @@
 
         <script src="{{ asset('davilla/js/script.js') }}"></script> {{-- Script nosso (DAVILLA) --}}
 
-        @stack('scripts') 
+        @stack('scripts')
 
 
     </body>
