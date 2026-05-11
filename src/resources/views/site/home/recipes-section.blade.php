@@ -6,7 +6,7 @@
         <div class="auto-container">
             <div class="sec-title text-center">
                 <div class="divider"><img src="{{ asset('davilla/images/icons/divider_1.png') }}" alt=""></div>
-                <h2>Recipes For You</h2>
+                <h2>Receitas para você</h2>
             </div>
 
             <!-- Recipes Carousel -->
