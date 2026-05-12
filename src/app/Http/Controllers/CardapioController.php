@@ -15,7 +15,7 @@ class CardapioController extends Controller
 
         // Buscar CATEGORIA para montar a lista de filtros
         $filtroCategoria = Categoria::where('status_categoria', 'ATIVO')
-            ->orderBy('ordem_categoria')
+            ->inRandomOrder()
             ->get();
 
         // Parar e mostrar o que está ordenando de acordo com o que está puxando 

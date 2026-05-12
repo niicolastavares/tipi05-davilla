@@ -29,5 +29,12 @@
 
 .shopping-cart .cart-footer .theme-btn {
     float: right;
-    margin-right: 26%;
+    margin-right: 50%;
+}
+
+/* TODO: ARRUMANDO BORDAS DAS IMAGENS NA PÁG PRICING / SABORES&VALORES*/
+.pricing-table .image-box .image img{
+    border: 2px solid #ff91a4;
+    border-radius: 10px;
+    display: inline-block;
 }

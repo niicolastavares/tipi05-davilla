@@ -15,10 +15,10 @@
                     <!-- cake img -->
                     <div class="icon icon_heart"></div>
                 </div>
-                <h1>Magic Processing</h1>
-                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent molestie eu turpis nec<br> molestie. Nam auctor magna mauris, non lacinia felis mattis nec.</p>
+                <h1>A Magia do Processo</h1>
+                <p>Cada detalhe do nosso processo é feito com cuidado, criatividade e dedicação para transformar ingredientes selecionados em experiências únicas e cheias de sabor.</p>
                 <div class="btn-box">
-                    <a href="#" class="theme-btn btn-style-one large"><span></span>Discover More<span></span></a>
+                    <a href="{{ route('sobre') }}" class="theme-btn btn-style-one large"><span></span>Descubra mais<span></span></a>
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@
                             <div class="icon flaticon-technology"></div>
                         </div>
                         <h3>Tradição</h3>
-                        <p>Lorem ipsum dolor amet, consectetur adipiscing elit. Nam consectetur facilisis aliquet.</p>
+                        <p>Receitas que atravessam gerações, preparadas com carinho e o verdadeiro sabor da confeitaria artesanal.</p>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@
                             <div class="icon flaticon-food-7"></div>
                         </div>
                         <h3>Qualidade</h3>
-                        <p>Amet interdum, diam molestie fusce natoque, nascetur laoreet mattis cras hendrerit.</p>
+                        <p>Selecionamos ingredientes de excelência para garantir sabor, frescor e qualidade em cada detalhe.</p>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                             <div class="icon flaticon-strawberry"></div>
                         </div>
                         <h3>Criatividade</h3>
-                        <p>Ullamcorper phasellus per vestibulum, lacus curabitur, rutrum mi fringilla.</p>
+                        <p>Transformamos ideias em criações únicas, combinando sabores, cores e texturas para encantar todos os sentidos.</p>
                     </div>
                 </div>
 
@@ -65,13 +65,13 @@
                             <div class="icon flaticon-food-1"></div>
                         </div>
                         <h3>Paixão</h3>
-                        <p>Leo sem, justo hymenaeos torquent tristique aliquam et id, ante eu nascetur dis sit enim.</p>
+                        <p>Cada criação da DaVilla é feita com dedicação e amor pela arte de encantar pessoas através da confeitaria.</p>
                     </div>
                 </div>                
             </div>
 
             <div class="btn-box">
-                <a href="#" class="theme-btn btn-style-two large"><span></span>Know Us Better<span></span></a>
+                <a href="#" class="theme-btn btn-style-two large"><span></span>Conheça-nos melhor<span></span></a>
             </div>
         </div>
     </div>

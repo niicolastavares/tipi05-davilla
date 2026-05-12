@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Categoria;
 use App\Models\Produto;
+use App\Models\Banner;
 
 class HomeController extends Controller
 {
@@ -28,10 +29,15 @@ class HomeController extends Controller
             ->orderBy('ordem_produto')
             ->get();
 
+        $banners = Banner::where('status_banner', 'ATIVO')
+            ->orderBy('ordem_banner')
+            ->get();
+
 
         return view('site.home.home', compact(
             'filtroCategoria',
             'listaProduto',
+            'banners',
         ));
     }
 }
