@@ -10,6 +10,7 @@ use App\Http\Controllers\Site\ContatoController;
 
 // Admin
 use App\Http\Controllers\Admin\DashController;
+use App\Http\Controllers\Admin\CategoriaController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,8 @@ Route::get('/regiao/categoria/{id}', [RegiaoController::class, 'show'])->name('r
 Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/', [DashController::class, 'index'])->name('dash');
+
+    // Rotas para categorias
+    Route::get('/categorias', [CategoriaController::class, 'index'])->name('categoria.index');
     
 });
