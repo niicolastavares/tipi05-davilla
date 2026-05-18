@@ -41,7 +41,7 @@
                 <li class="nav-header">GESTÃO DE CATÁLOGO</li>
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.categoria.index') }}" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-shop"></i>
                         <p>
                             Catálogo
@@ -52,7 +52,7 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.categoria.index') }}" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Categorias</p>
                             </a>
