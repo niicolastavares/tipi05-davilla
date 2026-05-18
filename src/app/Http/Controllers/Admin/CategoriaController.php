@@ -14,7 +14,9 @@ class CategoriaController extends Controller
     {
         $categorias = Categoria::orderBy('ordem_categoria') // Obtém as categorias ordenadas por ordem_categoria
         ->get(); 
-        
-        return view('admin.categorias.index', compact('categorias')); // Passa as categorias para a view
+
+        // dd($categorias); // Verifica os dados retornados
+
+        return view('admin.categoria.index', compact('categorias')); // Passa as categorias para a view
     }
 }
