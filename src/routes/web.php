@@ -48,5 +48,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/categorias', [CategoriaController::class, 'index'])->name('categoria.index');
     
     // Rotas para produtos
-    Route::get('/produtos', [ProdutoController::class, 'index'])->name('produto.index');
+    Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.index');
 });

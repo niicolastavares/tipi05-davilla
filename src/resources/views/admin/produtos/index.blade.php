@@ -1,10 +1,10 @@
 @extends('layout.admin')
 
-@section('title', 'Categoria | Confeitaria Dashboard')
+@section('title', 'Produtos | Confeitaria Dashboard')
 
-@section('pg-titulo', 'Categoria')
+@section('pg-titulo', 'Produtos')
 
-@section('link-topo', 'Categoria')
+@section('link-topo', 'Produtos')
 
 @section('content')
 
@@ -16,11 +16,11 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Gerenciamento de Categorias</h3>
+                    <h3 class="card-title">Gerenciamento de Produtos</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#modalNovaCategoria">
+                        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#modalNovoProduto">
                             <i class="bi bi-plus-circle"></i>
-                            Nova Categoria
+                            Novo Produto
                         </button>
                     </div>
                 </div>
@@ -29,21 +29,31 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th style="width: 40px">Ordem</th>
+                                <th style="width: 100px">Ordem</th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
+                                <th>Tamanho</th>
+                                <th>Unidade de Medida</th>
+                                <th>Valor</th>
+                                <th>Foto</th>
                                 <th>Status</th>
-                                <th style="width: 200px">Ações</th>
+                                <th style="width: 200px">Editar / Excluir </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($categorias as $linha)
+                            @forelse($produtos as $linha)
                             <tr class="align-middle">
-                                <td>{{ $linha->ordem_categoria }}</td>
-                                <td>{{ $linha->nome_categoria }}</td>
-                                <td>{{ $linha->descricao_categoria }}</td>
+                                <td>{{ $linha->ordem_produto }}</td>
+                                <td>{{ $linha->nome_produto }}</td>
+                                <td>{{ $linha->descricao_produto }}</td>
+                                <td>{{ $linha->tamanho_produto }}</td>
+                                <td>{{ $linha->unid_med_produto }}</td>
+                                <td>{{ $linha->valor_produto }}</td>
                                 <td>
-                                    @if($linha->status_categoria === 'ATIVO')
+                                    <img src="{{ asset($linha->foto_produto) }}" alt="{{ $linha->slug_produto }}" class="img-thumbnail" style="max-width: 100px;">
+                                </td>
+                                <td>
+                                    @if($linha->status_produto === 'ATIVO')
                                         <span class="badge text-bg-success">ATIVO</span>
                                     @else
                                         <span class="badge text-bg-danger">INATIVO</span>
@@ -63,7 +73,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td>Nenhuma categoria cadastrada</td>
+                                <td>Nenhum produto cadastrado</td>
                             </tr>
                             @endforelse
 
@@ -83,6 +93,6 @@
 </div> <!--end::App Content-->
 
 
-@include('admin.categoria.modal.create')
+@include('admin.produtos.modal.create')
 
 @endsection

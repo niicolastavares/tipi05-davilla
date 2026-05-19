@@ -14482,6 +14482,7 @@ html.maximized-card {
 }
 
 .table:not(.table-dark) {
+  text-align: center;
   color: inherit;
 }
 .table.table-head-fixed thead tr:nth-child(1) th {

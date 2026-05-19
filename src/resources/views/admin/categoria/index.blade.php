@@ -33,7 +33,7 @@
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Status</th>
-                                <th style="width: 200px">Ações</th>
+                                <th style="width: 200px">Editar / Excluir</th>
                             </tr>
                         </thead>
                         <tbody>
