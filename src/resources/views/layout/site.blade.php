@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-    @include('partials.head')
+    <head>
+        @include('partials.head')
 
     <head>
 
@@ -26,8 +26,8 @@
 
         </div>
 
-        {{--  @include('partials.script'): Carrega os scripts usados em várias páginas --}}
-        @include('partials.script') 
+        {{-- @include('partials.script'): Carrega os scripts usados em várias páginas --}}
+        @include('partials.script')
 
 
         @stack('plugins') {{-- @stack: Área reservada, vai permitir que uma página específica injete um script --}}

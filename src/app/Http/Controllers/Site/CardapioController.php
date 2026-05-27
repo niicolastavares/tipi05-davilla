@@ -10,31 +10,27 @@ use Illuminate\Http\Request;
 
 class CardapioController extends Controller
 {
-
     public function cardapio()
     {
-
-        // Buscar CATEGORIA para montar a lista de filtros
+        // Buscar CATEGORIA para montar a lista de filtro
         $filtroCategoria = Categoria::where('status_categoria', 'ATIVO')
-            ->inRandomOrder()
+            ->orderBy('ordem_categoria')
             ->get();
 
-        // Parar e mostrar o que está ordenando de acordo com o que está puxando 
-        // dd($filtroCategoria);
 
-
-
-        // Buscar todos os PRODUTOS ATIVOS COM CATEGORIA para exibir na página / CategoriaProduto está sendo chamado dentro da função em app/Models/Produto.php 
+        // Buscar todos os PRODUTOS ativos COM a categoria
         $listaProduto = Produto::with('CategoriaProduto')
             ->where('status_produto', 'ATIVO')
+            ->whereHas('CategoriaProduto', function ($query) {
+                $query->where('status_categoria', 'ATIVO');
+            })
             ->orderBy('ordem_produto')
             ->get();
 
-        // Parar e mostrar o que está ordenando de acordo com o que está puxando
-        // dd($listaProduto);
+        //dd($listaProduto);
 
         $categoriaAtiva = 'all';
-        
+
         return view('site.cardapio.cardapio', compact(
             'filtroCategoria',
             'listaProduto',
@@ -47,10 +43,16 @@ class CardapioController extends Controller
 
         $produto = Produto::with('CategoriaProduto')
             ->where('status_produto', 'ATIVO')
+            ->whereHas('CategoriaProduto', function ($query) {
+                $query->where('status_categoria', 'ATIVO');
+            })
             ->where('slug_produto', $slug)
             ->firstOrFail();
 
         $produtosRelacionados = Produto::where('status_produto', 'ATIVO')
+            ->whereHas('CategoriaProduto', function ($query) {
+                $query->where('status_categoria', 'ATIVO');
+            })
             ->where('id_categoria', $produto->id_categoria)
             ->where('id_produto', '!=', $produto->id_produto)
             ->orderBy('ordem_produto')
@@ -73,10 +75,14 @@ class CardapioController extends Controller
 
         $listaProduto = Produto::with('CategoriaProduto')
             ->where('status_produto', 'ATIVO')
+            ->whereHas('CategoriaProduto', function ($query) {
+                $query->where('status_categoria', 'ATIVO');
+            })
             ->orderBy('ordem_produto')
             ->get();
 
         $categoriaAtiva = '.categoria-' . $id;
+        //.categoria-3
 
         return view('site.cardapio.cardapio', compact(
             'filtroCategoria',

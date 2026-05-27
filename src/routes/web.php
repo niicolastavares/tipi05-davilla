@@ -47,17 +47,24 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     // Rotas para categorias
     Route::get('/categorias', [CategoriaController::class, 'index'])->name('categoria.index');
-    
+
     // Rotas para produtos
     Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.index');
 
     // Outras rotas para categorias e produtos podem ser adicionadas aqui (create, store, edit, update, destroy)
-    
+
     Route::post('/categorias', [CategoriaController::class, 'store'])->name('categoria.store');
-    
+
     // Route::put('/categorias/{id}', [CategoriaController::class, 'update'])->name('categoria.update'); // put espera todos os dados do formulário
-    Route::patch('/categorias/{id}/desativar', [CategoriaController::class, 'disable'])->name('categoria.disable'); // patch espera apenas o id para desativar a categoria
-    
-    Route::patch('/categorias/{id}/ativar', [CategoriaController::class, 'activate'])->name('categoria.activate');
-    
+    // Desativar
+    Route::patch('/categorias/{id}/desativar', [CategoriaController::class, 'desativar'])->name('categoria.disable');
+    // Ativar
+    Route::patch('/categorias/{id}/ativar', [CategoriaController::class, 'ativar'])->name('categoria.create');
+
+    // Editar
+    Route::put('/categorias/{id}', [CategoriaController::class, 'update'])->name('categoria.update');
+
+
+    Route::get('/produto', [ProdutoController::class, 'index'])->name('produto.index');
+    Route::post('/produto', [ProdutoController::class, 'store'])->name('produto.store');
 });

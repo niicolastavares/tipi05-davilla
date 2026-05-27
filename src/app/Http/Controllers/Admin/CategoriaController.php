@@ -4,27 +4,28 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-use App\Models\Categoria; // Importa o modelo Categoria
+use App\Models\Categoria;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoriaController extends Controller
 {
-
     public function index()
     {
-        $categorias = Categoria::orderBy('ordem_categoria') // Obtém as categorias ordenadas por ordem_categoria
+
+        $categorias = Categoria::orderBy('ordem_categoria')
+            // ->where('status_categoria', 'ATIVO')
             ->get();
 
-        // dd($categorias); // Verifica os dados retornados
-
-        return view('admin.categoria.index', compact('categorias')); // Passa as categorias para a view
+        //dd($categorias);
+        return view('admin.categoria.index', compact('categorias'));
     }
 
+    // METODO CRIAR
     public function store(Request $request)
     {
-        // dd($request); // Verifica os dados recebidos do formulário
 
-        // Validação dos dados recebidos do formulário
+        //dd($request);
+
         $request->validate([
             'nome_categoria'        => 'required|string|max:30',
             'descricao_categoria'   => 'required|string',
@@ -32,7 +33,6 @@ class CategoriaController extends Controller
             'status_categoria'      => 'required|in:ATIVO,INATIVO',
         ]);
 
-        // Criação da nova categoria usando o modelo Categoria
         Categoria::create([
             'nome_categoria'        => $request->nome_categoria,
             'descricao_categoria'   => $request->descricao_categoria,
@@ -40,43 +40,58 @@ class CategoriaController extends Controller
             'status_categoria'      => $request->status_categoria,
         ]);
 
-        // Redireciona de volta para a página de categorias com uma mensagem de sucesso
         return redirect()
             ->route('admin.categoria.index')
             ->with('success', 'Categoria cadastrada com sucesso!');
     }
 
-    public function disable($id)
+    // METODO DESATIVAR
+    public function desativar($id)
     {
-        // dd($id); // Verifica o ID recebido para desativar a categoria
-
-        $categoria = Categoria::findOrFail($id); // Encontra a categoria pelo ID ou falha se não encontrar
-        //dd($categoria); // Verifica os dados da categoria encontrada
-
+        $categoria = Categoria::findOrFail($id);
+        // $categoria->status_categoria = 'INATIVO';
         $categoria->update([
-            'status_categoria' => 'INATIVO' // Define o status da categoria como INATIVO
+            'status_categoria' => 'INATIVO',
         ]);
 
-        // Redireciona de volta para a página de categorias com uma mensagem de sucesso
         return redirect()
             ->route('admin.categoria.index')
-            ->with('success', 'Categoria desativada com sucesso!');
+            ->with('success', 'Categoria desativada com sucesso');
     }
 
-    public function activate($id)
+    // METODO ATIVAR
+    public function ativar($id)
     {
-        // dd($id); // Verifica o ID recebido para ativar a categoria
+        $categoria = Categoria::findOrFail($id);
+        $categoria->status_categoria = 'ATIVO';
 
-        $categoria = Categoria::findOrFail($id); // Encontra a categoria pelo ID ou falha se não encontrar
-        //dd($categoria); // Verifica os dados da categoria encontrada
-
-        $categoria->update([
-            'status_categoria' => 'ATIVO' // Define o status da categoria como ATIVO
-        ]);
-
-        // Redireciona de volta para a página de categorias com uma mensagem de sucesso
         return redirect()
             ->route('admin.categoria.index')
-            ->with('success', 'Categoria ativada com sucesso!');
+            ->with('success', 'Categoria ativada com sucesso');
+    }
+
+    // METODO ATUALIZAR
+    public function update(Request $request, $id)
+    {
+
+        $request->validate([
+            'nome_categoria'        => 'required|string|max:30',
+            'descricao_categoria'   => 'required|string',
+            'ordem_categoria'       => 'required|integer',
+            'status_categoria'      => 'required|in:ATIVO,INATIVO',
+        ]);
+
+        $categoria = Categoria::findOrFail($id);
+
+        $categoria->update([
+            'nome_categoria'        => $request->nome_categoria,
+            'descricao_categoria'   => $request->descricao_categoria,
+            'ordem_categoria'       => $request->ordem_categoria,
+            'status_categoria'      => $request->status_categoria,
+        ]);
+
+        return redirect()
+            ->route('admin.categoria.index')
+            ->with('success', 'Categoria atualizada com sucesso');
     }
 }

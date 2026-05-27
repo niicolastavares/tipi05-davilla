@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
-use App\Support\Facades\View;
+
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Categoria;
 //use Illuminate\View\View;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,19 +22,19 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void // definir que o compose irá ser executado
+    public function boot(): void
     {
+        View::composer('partials.header', function ($view) {
 
-        View()->composer('partials.header', function ($view) {
+            // Buscar todas as categorias ordenar por nome
+            $listaCategoria = Categoria::where('status_categoria', 'ATIVO')
+                ->orderBy('nome_categoria')
+                ->get();
 
-            // * Buscar todas as categorias e ordenar por nome crescente A-Z
-            $listaCategoria = Categoria::orderBy('nome_categoria', 'asc')->get();
+            //dd($listaCategoria);
+            //var_dump($listaCategoria);
 
-            //dd($listaCategoria); // Para a aplicação e retorna o conteúdo da variável $listaCategoria para depuração
-            //var_dump($listaCategoria); // Exibe o conteúdo da variável $listaCategoria sem parar a execução da aplicação
-
-            $view->with('lista', $listaCategoria); // Passa a variável $listaCategoria para a view 'partials.header' com o nome 'lista'
-
+            $view->with('lista', $listaCategoria);
         });
     }
 }

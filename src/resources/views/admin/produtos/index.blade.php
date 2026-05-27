@@ -1,10 +1,10 @@
 @extends('layout.admin')
 
-@section('title', 'Produtos | Confeitaria Dashboard')
+@section('title', 'Produto | Confeitaria Dashboard')
 
-@section('pg-titulo', 'Produtos')
+@section('pg-titulo', 'Produto')
 
-@section('link-topo', 'Produtos')
+@section('link-topo', 'Produto')
 
 @section('content')
 
@@ -24,44 +24,75 @@
                         </button>
                     </div>
                 </div>
-                <!-- /.card-header -->
+                <!-- /.card-header 
+                 
+                Columns:
+                    id_produto 
+                    nome_produto  
+                    slug_produto 
+                    id_categoria 
+                    descricao_produto 
+                    tamanho_produto
+                    unid_med_produto
+                    valor_produto 
+                    foto_produto  
+                    status_produto  
+                    destaque_produto 
+                    ordem_produto 
+                
+                -->
                 <div class="card-body p-0">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th style="width: 100px">Ordem</th>
-                                <th>Nome</th>
-                                <th>Descrição</th>
+                                <th style="width: 150px;">Foto</th>
+                                <th>Nome e Descrição</th>
                                 <th>Tamanho</th>
-                                <th>Unidade de Medida</th>
+                                <th>Unid. Medida</th>
                                 <th>Valor</th>
-                                <th>Foto</th>
+                                <th>Destaque</th>
                                 <th>Status</th>
-                                <th style="width: 200px">Editar / Excluir </th>
+                                <th style="width: 200px">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($produtos as $linha)
                             <tr class="align-middle">
-                                <td>{{ $linha->ordem_produto }}</td>
-                                <td>{{ $linha->nome_produto }}</td>
-                                <td>{{ $linha->descricao_produto }}</td>
+                                <td>
+                                    <a href="{{ asset('davilla/images/' . $linha->foto_produto) }}"
+                                        data-lightbox="galeria"
+                                        data-title="{{ $linha->nome_produto }}">
+
+                                        <img src="{{ asset('davilla/images/' . $linha->foto_produto) }}"
+                                            class="img-thumbnail"
+                                            alt="{{ $linha->nome_produto }}">
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="tblProduto">
+                                        <div class="tituloProduto">
+                                            {{ $linha->nome_produto }}
+                                        </div>
+                                        <div class="descProduto">
+                                            {{ $linha->descricao_produto }}
+                                        </div>
+                                    </div>
+
+                                </td>
                                 <td>{{ $linha->tamanho_produto }}</td>
                                 <td>{{ $linha->unid_med_produto }}</td>
                                 <td>{{ $linha->valor_produto }}</td>
-                                <td>
-                                    <img src="{{ asset($linha->foto_produto) }}" alt="{{ $linha->slug_produto }}" class="img-thumbnail" style="max-width: 100px;">
-                                </td>
+                                <td>{{ $linha->destaque_produto }}</td>
                                 <td>
                                     @if($linha->status_produto === 'ATIVO')
-                                        <span class="badge text-bg-success">ATIVO</span>
+                                    <span class="badge text-bg-success">Ativo</span>
                                     @else
-                                        <span class="badge text-bg-danger">INATIVO</span>
+                                    <span class="badge text-bg-danger">Inativo</span>
                                     @endif
                                 </td>
                                 <td>
 
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria{{ $linha->id_categoria }}">
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarproduto{{ $linha->id_produto }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
 
@@ -73,24 +104,20 @@
                             </tr>
                             @empty
                             <tr>
-                                <td>Nenhum produto cadastrado</td>
+                                <td>Nenhuma produto cadastrada</td>
                             </tr>
                             @endforelse
 
                         </tbody>
                     </table>
-                    
-                </div> <!-- /.card-body -->
-                
-            </div> <!-- /.card -->
-            
+                </div>
+                <!-- /.card-body -->
+            </div>
 
 
-        </div> <!--end::Row-->
-
-    </div> <!--end::Container-->
-
-</div> <!--end::App Content-->
+        </div>
+    </div>
+</div>
 
 
 @include('admin.produtos.modal.create')
