@@ -20,7 +20,6 @@ class Categoria extends Model
         'nome_categoria',
         'descricao_categoria',
         'status_categoria',
-        'ordem_categoria',
     ];
 
     // * hasMany = tem muitos

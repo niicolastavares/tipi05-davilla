@@ -19,7 +19,7 @@ class HomeController extends Controller
 
         // Buscar CATEGORIA para montar a lista de filtros
         $filtroCategoria = Categoria::where('status_categoria', 'ATIVO')
-            ->orderBy('ordem_categoria')
+            ->orderBy('nome_categoria')
             ->get();
 
         // dd($filtroCategoria);
@@ -27,11 +27,11 @@ class HomeController extends Controller
         // Buscar todos os PRODUTOS ATIVOS COM CATEGORIA para exibir na página / CategoriaProduto está sendo chamado dentro da função em app/Models/Produto.php 
         $listaProduto = Produto::with('CategoriaProduto')
             ->where('status_produto', 'ATIVO')
-            ->orderBy('ordem_produto')
+            ->orderBy('nome_produto')
             ->get();
 
         $banners = Banner::where('status_banner', 'ATIVO')
-            ->orderBy('ordem_banner')
+            ->orderBy('nome_banner')
             ->get();
 
 
