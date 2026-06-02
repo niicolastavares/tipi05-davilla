@@ -42,7 +42,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        // Login para Funcionário/admin
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'usuarios',
+        ],
     ],
+
+    // Login para cliente (opcional, caso queira ter um sistema de login para clientes)
+    // 'cliente' => [
+    //     'driver' => 'session',
+    //     'provider' => 'usuarios',
+    // ],
 
     /*
     |--------------------------------------------------------------------------
@@ -66,6 +77,16 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', User::class),
         ],
+        'usuarios' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Usuario::class,
+        ],
+
+        // provider para clientes (opcional)
+        // 'clientes' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Cliente::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',
