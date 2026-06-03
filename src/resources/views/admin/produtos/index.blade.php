@@ -14,6 +14,18 @@
         <!--begin::Row-->
         <div class="row">
 
+            @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+            @endif
+
+            @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <strong>Atenção!</strong> verifique os campos do formulário.
+            </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Gerenciamento de Produtos</h3>
@@ -92,19 +104,38 @@
                                 </td>
                                 <td>
 
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarproduto{{ $linha->id_produto }}">
+                                    <!-- EDITAR -->
+                                    <button type="button"
+                                        class="btn btn-warning"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalEditarProduto{{ $linha->id_produto }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
 
-                                    <button type="button" class="btn btn-danger">
-                                        <i class="bi bi-trash3"></i>
-                                    </button>
+                                    <!-- DESATIVAR ou ATIVAR -->
+                                    @if($linha->status_produto === 'ATIVO')
+                                    <form action="{{ route('admin.produtos.disable', $linha->id_produto) }}" method="post">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
+                                    </form>
+                                    @else
+                                    <form action="{{ route('admin.produtos.create', $linha->id_produto) }}" method="post">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="bi bi-arrow-counterclockwise"></i>
+                                        </button>
+                                    </form>
+                                    @endif
 
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td>Nenhuma produto cadastrada</td>
+                                <td>Nenhuma produto cadastrado</td>
                             </tr>
                             @endforelse
 
@@ -121,5 +152,8 @@
 
 
 @include('admin.produtos.modal.create')
+@foreach($produtos as $produto)
+@include('admin.produtos.modal.edit', ['produto' => $produto])
+@endforeach
 
 @endsection

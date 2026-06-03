@@ -60,4 +60,54 @@ class ProdutoController extends Controller
             ->route('admin.produto.index')
             ->with('success', 'Produto cadastrado com sucesso!');
     }
+
+    public function desativar($id)
+    {
+        $produto = Produto::findOrFail($id);
+        $produto->status_produto = 'INATIVO';
+        $produto->update([
+            'status_produto' => 'INATIVO',
+        ]);
+
+        return redirect()
+            ->route('admin.produtos.index')
+            ->with('success', 'Produto desativado com sucesso');
+    }
+
+    // METODO ATIVAR
+    public function ativar($id)
+    {
+        $produto = Produto::findOrFail($id);
+        $produto->status_produto = 'ATIVO';
+        $produto->update([
+            'status_produto' => 'ATIVO',
+        ]);
+
+        return redirect()
+            ->route('admin.produtos.index')
+            ->with('success', 'Produto ativado com sucesso');
+    }
+
+    // METODO ATUALIZAR
+    public function update(Request $request, $id)
+    {
+
+        $request->validate([
+            'nome_produto'        => 'required|string|max:30',
+            'descricao_produto'   => 'required|string',
+            'status_produto'      => 'required|in:ATIVO,INATIVO',
+        ]);
+
+        $produto = Produto::findOrFail($id);
+
+        $produto->update([
+            'nome_produto'        => $request->nome_produto,
+            'descricao_produto'   => $request->descricao_produto,
+            'status_produto'      => $request->status_produto,
+        ]);
+
+        return redirect()
+            ->route('admin.produtos.index')
+            ->with('success', 'Produto atualizado com sucesso');
+    }
 }

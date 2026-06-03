@@ -83,8 +83,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/produto', [ProdutoController::class, 'index'])->name('produto.index');
         Route::post('/produto', [ProdutoController::class, 'store'])->name('produto.store');
+
+        // Desativar
+        Route::patch('/produtos/{id}/desativar', [ProdutoController::class, 'desativar'])->name('produtos.disable');
+        // Ativar
+        Route::patch('/produtos/{id}/ativar', [ProdutoController::class, 'ativar'])->name('produtos.create');
+        // Editar
+        Route::put('/produtos/{id}', [ProdutoController::class, 'update'])->name('produtos.update');
+
     });
-    // Fim do prefix admin
+    // Fim do prefix admin  
 
 
 });

@@ -67,7 +67,7 @@
                                         class="btn btn-warning"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalEditarCategoria{{ $linha->id_categoria }}">
-                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                        <i class="bi bi-pencil"></i>
                                     </button>
 
 
@@ -86,7 +86,7 @@
                                         @csrf
                                         @method('PATCH')
                                         <button type="submit" class="btn btn-success">
-                                            <i class="bi bi-check2"></i>
+                                            <i class="bi bi-arrow-counterclockwise"></i>
                                         </button>
                                     </form>
                                     @endif
