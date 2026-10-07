@@ -96,3 +96,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
 });
+
+// Documentação da API
+Route::view('/api/documentacao', 'api.documentacao')->name('api.documentacao');
