@@ -49,11 +49,13 @@ return [
         ],
     ],
 
-    // Login para cliente (opcional, caso queira ter um sistema de login para clientes)
-    // 'cliente' => [
-    //     'driver' => 'session',
-    //     'provider' => 'usuarios',
-    // ],
+
+    // Provider de autenticação dos clientes da API
+     'clientes' => [
+           'driver' => 'eloquent',
+           'model' => App\Models\Cliente::class,
+      ],
+
 
     /*
     |--------------------------------------------------------------------------
