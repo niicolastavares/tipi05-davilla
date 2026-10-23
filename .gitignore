@@ -38,4 +38,4 @@ Homestead.yaml
 *:Zone.Identifier
 
 # Backups locais do banco
-backup/*.sql
+backup/*.sql*Zone.Identifier
